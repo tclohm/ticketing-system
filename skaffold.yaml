@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta27
+kind: Config
+metadata:
+  name: microservices-ticketing
+build:
+  artifacts:
+  - image: tclohm/auth
+    context: auth
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - infrastructure/k8s/auth-depl.yaml
