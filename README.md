@@ -1,7 +1,7 @@
 # Ticketing System using Microservices
 
 
-### [Infrastructure] (https://github.com/tclohm/ticketing-system/tree/main/infrastructure/k8s)
+### [Infrastructure](https://github.com/tclohm/ticketing-system/tree/main/infrastructure/k8s)
 - folders
 	-- auth-deply
 	-- ingress-srv.yaml
