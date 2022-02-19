@@ -1,5 +1,6 @@
-# Ticketing System using Microservices
+# Ticketing System
 
+## Sample application using docker and kubernetes for microservices
 
 ### [Infrastructure](https://github.com/tclohm/ticketing-system/tree/main/infrastructure/k8s)
 - k8s
