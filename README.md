@@ -2,8 +2,8 @@
 
 
 ### [Infrastructure](https://github.com/tclohm/ticketing-system/tree/main/infrastructure/k8s)
-- folders
-  - auth-deply
+- k8s
+  - auth-deply.yaml
   - ingress-srv.yaml
 
 To start the cluster, you must be in the root directory 
@@ -13,3 +13,11 @@ docker & kubernetes must be on
 ```sh
 skaffold dev
 ```
+### [Auth](https://github.com/tclohm/ticketing-system/tree/main/auth)
+- auth
+  - src
+    - errors
+    - middlewares
+    - routes
+    - index.ts
+  - Dockerfile   
