@@ -41,4 +41,5 @@ const start = async () => {
 	});
 };
 
+start();
 
