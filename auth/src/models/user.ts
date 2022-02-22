@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Password from '../services/password';
 
 // MARK: -- Interface to describe properties required for a new user
 interface UserAttrs {
@@ -21,6 +22,15 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	}
+});
+
+// MARK: -- middleware before 'save' occurs
+userSchema.pre('save', async function(done) {
+	if (this.isModified('password')) {
+		const hashed = await Password.toHash(this.get('password'));
+		this.set('password', hashed);
+	}
+	done();
 });
 
 // MARK: -- getting typescript involved, custom function in mongoose
