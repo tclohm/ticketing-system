@@ -24,6 +24,8 @@ skaffold dev
   - src
     - errors
     - middlewares
+    - models
     - routes
+    - services
     - index.ts
   - Dockerfile   
