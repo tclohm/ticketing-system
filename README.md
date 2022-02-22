@@ -4,7 +4,7 @@
 
 ### Stack
 Express & MongoDB
-Mongoose used to connect and interact with MongoDB
+(Mongoose used to connect and interact with MongoDB)
 
 ### [Infrastructure](https://github.com/tclohm/ticketing-system/tree/main/infrastructure/k8s)
 - k8s
