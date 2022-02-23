@@ -7,7 +7,7 @@ Express & MongoDB
 (Mongoose used to connect and interact with MongoDB)
 
 ### [Infrastructure](https://github.com/tclohm/ticketing-system/tree/main/infrastructure/k8s)
-- k8s
+- k8s/
   - auth-deply.yaml
   - auth-mongo-depl.yaml
   - ingress-srv.yaml
@@ -20,12 +20,12 @@ docker & kubernetes must be on
 skaffold dev
 ```
 ### [Auth](https://github.com/tclohm/ticketing-system/tree/main/auth)
-- auth
-  - src
-    - errors
-    - middlewares
-    - models
-    - routes
-    - services
+- auth/
+  - src/
+    - errors/
+    - middlewares/
+    - models/
+    - routes/
+    - services/
     - index.ts
   - Dockerfile   
