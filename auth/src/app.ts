@@ -20,10 +20,11 @@ app.disable('x-powered-by');
 app.use(misleadingHeader);
 app.use(json()); 
 
+// MARK: -- secure : https
 app.use(
 	cookieSession({
 		signed: false,
-		secure: true
+		secure: process.env.NODE_ENV !== 'test'
 	})
 );
 
