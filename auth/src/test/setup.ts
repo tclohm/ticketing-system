@@ -5,13 +5,11 @@ import { app } from '../app';
 let mongo: any;
 
 beforeAll(async () => {
-	mongo = new MongoMemoryServer();
+	process.env.JWT_KEY = 'doc!';
+	mongo = await MongoMemoryServer.create();
 	const mongoURI = await mongo.getUri();
 
-	await mongoose.connect(mongoURI, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true
-	});
+	await mongoose.connect(mongoURI);
 });
 
 beforeEach(async () => {
