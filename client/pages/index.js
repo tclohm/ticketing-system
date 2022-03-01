@@ -1,30 +1,21 @@
-import axios from 'axios';
+import buildClient from '../api/build-client';
 
 const Root = ({ currentUser }) => {
-	console.log(currentUser)
-	return <h1>Root</h1>
+	return (
+		<div>
+			{currentUser === null ?
+				<p>anonymous</p>
+				:
+				<p>{currentUser.email}</p>
+			}
+		</div>
+	)
 }
 
 // MARK: -- Function
-export const getServerSideProps = async ({ req }) => {
-	if (typeof window === 'undefined') {
-		// MARK: -- Server
-		// http://servicename.namespace.svc.cluster.local
-		const { data } = await axios.get(
-			'http://ingress-nginx-controller.ingress-nginx.svc.cluster.local/api/users/currentuser', 
-			{
-				withCredentials: true,
-				headers: req.headers
-			}
-		).catch(err => {
-			console.log(err)
-		});
-		return { props: data }
-	} else {
-		// MARK: -- Browser
-		const { data } = await axios.get('/api/users/currentuser');
-		return { props: data }
-	}
+export const getServerSideProps = async (ctx) => {
+	const { data } = await buildClient(ctx).get('/api/users/currentuser');
+	return { props: data };
 }
 
 export default Root
