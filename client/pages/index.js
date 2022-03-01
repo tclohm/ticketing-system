@@ -1,5 +1,12 @@
-const Root = () => {
-	return <h1>root</h1>
+const Root = ({ color }) => {
+	console.log(color)
+	return <h1>Root</h1>
 }
 
-export default Root;
+Root.getInitialProps = async (ctx) => {
+	return {
+		color: 'orange'
+	}
+}
+
+export default Root
