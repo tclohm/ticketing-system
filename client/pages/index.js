@@ -2,7 +2,7 @@ import buildClient from '../api/build-client';
 
 const Root = ({ currentUser }) => {
 	return (
-		<div>
+		<div className="container">
 			{currentUser === null ?
 				<p>anonymous</p>
 				:
