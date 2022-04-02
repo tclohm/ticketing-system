@@ -13,9 +13,10 @@ const Root = ({ currentUser }) => {
 }
 
 // MARK: -- Function
-Root.getInitialProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
 	const { data } = await buildClient(ctx).get('/api/users/currentuser');
-	return data;
+	console.log(data)
+	return { props: data };
 }
 
 export default Root
