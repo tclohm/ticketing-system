@@ -40,7 +40,7 @@ it('returns a 401 if the user does not own the ticket', async function() {
 		})
 
 	const id = response.body.id;
-		
+
 	await request(app)
 		.put(`/api/tickets/${id}`)
 		.set('Cookie', cookie2)
@@ -49,8 +49,6 @@ it('returns a 401 if the user does not own the ticket', async function() {
 			price: 1
 		})
 		.expect(401)
-		
-		
 });
 
 it('returns a 400 if the user provides an invalid title or price', async function() {
@@ -69,11 +67,10 @@ it('returns a 400 if the user provides an invalid title or price', async functio
 		.send({
 			title: '',
 			price: 20
-		})
-		.expect(400)
+		}).expect(400)
 	
 
-	const p = await request(app)
+	await request(app)
 		.put(`/api/tickets/${response.body.id}`)
 		.set('Cookie', cookie)
 		.send({
