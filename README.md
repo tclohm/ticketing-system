@@ -26,6 +26,34 @@ skaffold dev
     - middlewares/
     - models/
     - routes/
+      - __test__/
     - services/
-    - index.ts
+    - test/
+    - index
+  - Dockerfile
+
+### [Client](https://github.com/tclohm/ticketing-system/tree/main/client) -- next.js
+- client/
+  - api/
+  - components/
+  - hooks/
+  - pages/
+      - auth/
+      - _app
+      - index
   - Dockerfile   
+### [Common](https://npm.com/tclohm/@eventspaceticketing/common) -- third party package resources and auth
+### [Tickets](https://github.com/tclohm/ticketing-system/tree/main/tickets)
+- tickets/
+  - src/
+    - models/
+    - routes/
+      - __test__/
+    - test/
+    - app
+    - index
+  - Dockerfile
+
+You must create kubernetes secret with JWT for auth to work between microservices
+environment variable set in infrastructure/k8s/\*-depls.yaml
+
