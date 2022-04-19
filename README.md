@@ -58,6 +58,6 @@ skaffold dev
 You must create kubernetes secret with JWT for auth to work between microservices
 environment variable set in infrastructure/k8s/\*-depls.yaml
 
-ingress-nginx enabled
-port-forward 4222:4222 for NATS
+##### ingress-nginx enabled
+##### port-forward 4222:4222 for NATS
 
