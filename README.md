@@ -46,6 +46,7 @@ skaffold dev
 ### [Tickets](https://github.com/tclohm/ticketing-system/tree/main/tickets)
 - tickets/
   - src/
+    - __mocks__/ 
     - models/
     - routes/
       - __test__/
@@ -56,4 +57,7 @@ skaffold dev
 
 You must create kubernetes secret with JWT for auth to work between microservices
 environment variable set in infrastructure/k8s/\*-depls.yaml
+
+ingress-nginx enabled
+port-forward 4222:4222 for NATS
 
