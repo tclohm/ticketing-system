@@ -22,24 +22,13 @@ async (req: Request, res: Response) => {
 
 	// Find ticket user is trying to order
 	const ticket = await Ticket.findById(ticketId);
-
 	if (!ticket) {
 		throw new NotFoundError();
 	}
 
 	// Make sure ticket isn't reserved
-	const existingOrder = await Order.findOne({
-		ticket: ticket,
-		status: {
-			$in: [
-				OrderStatus.Created,
-				OrderStatus.AwaitingPayment,
-				OrderStatus.Complete
-			]
-		}
-	});
-
-	if (existingOrder) {
+	const isReserved = await ticket.isReserved();
+	if (isReserved) {
 		throw new BadRequestError('Ticket is already reserved');
 	}
 
