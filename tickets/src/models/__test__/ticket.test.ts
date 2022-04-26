@@ -28,4 +28,6 @@ it('implements optimistic concurrency control', async () => {
 	} catch (err) {
 		return;
 	}
+
+	throw new Error('Should not reach')
 });
