@@ -31,3 +31,18 @@ it('implements optimistic concurrency control', async () => {
 
 	throw new Error('Should not reach')
 });
+
+it('increments the version number on multiple saves', async () => {
+	const ticket = Ticket.build({
+		title: 'Garbage Products',
+		price: 10,
+		userId: 'FORTHEWIN24'
+	});
+
+	await ticket.save();
+	expect(ticket.version).toEqual(0);
+	await ticket.save();
+	expect(ticket.version).toEqual(1);
+	await ticket.save();
+	expect(ticket.version).toEqual(2);
+})
