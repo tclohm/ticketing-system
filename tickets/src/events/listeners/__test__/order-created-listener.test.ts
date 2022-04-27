@@ -3,7 +3,7 @@ import { Message } from 'node-nats-streaming';
 import { OrderCreatedListener } from '../order-created-listener';
 import { natsWrapper } from '../../../nats-wrapper';
 import { Ticket } from '../../../models/ticket';
-import { OrderCreatedEvent. OrderStatus } from '@eventspaceticketing/common';
+import { OrderCreatedEvent, OrderStatus } from '@eventspaceticketing/common';
 
 const setup = async () => {
 	// create instance of listener
@@ -39,3 +39,22 @@ const setup = async () => {
 
 	return { listener, ticket, data, msg };
 };
+
+
+it('sets teh userId of the ticket', async () => {
+	const { listener, ticket, data, msg } = await setup();
+
+	await listener.onMessage(data, msg);
+
+	const updated = await Ticket.findById(ticket.id);
+
+	expect(updated!.orderId).toEqual(data.id);
+});
+
+it('acks the message', async () => {
+	const { listener, ticket, data, msg } = await setup();
+
+	await listener.onMessage(data, msg);
+
+	expect(msg.ack).toHaveBeenCalled()
+});
