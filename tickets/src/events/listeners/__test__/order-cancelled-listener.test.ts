@@ -34,3 +34,34 @@ const setup = async () => {
 
 	return { msg, data, ticket, orderId, listener };
 };
+
+
+it('updates the ticket', async () => {
+	const { msg, data, ticket, orderId, listener } = await setup();
+	
+	await listener.onMessage(data, msg);
+
+	const updated = await Ticket.findById(ticket.id);
+
+	expect(updated!.orderId).not.toBeDefined();
+});
+
+it('publishes an event', async () => {
+	const { msg, data, ticket, orderId, listener } = await setup();
+	
+	await listener.onMessage(data, msg);
+
+	const updated = await Ticket.findById(ticket.id);
+
+	expect(natsWrapper.client.publish).toHaveBeenCalled();
+});
+
+it('acks the message', async () => {
+	const { msg, data, ticket, orderId, listener } = await setup();
+	
+	await listener.onMessage(data, msg);
+
+	const updated = await Ticket.findById(ticket.id);
+
+	expect(msg.ack).toHaveBeenCalled();
+});
