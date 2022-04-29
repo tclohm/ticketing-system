@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { validateRequest, NotFoundError, requireAuth, NotAuthorizedError. BadRequestError } from '@eventspaceticketing/common'
+import { validateRequest, NotFoundError, requireAuth, NotAuthorizedError, BadRequestError } from '@eventspaceticketing/common'
 
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
