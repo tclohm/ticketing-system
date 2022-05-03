@@ -6,7 +6,7 @@ interface OrderAttrs {
 	id: string;
 	version: number;
 	price: number;
-	userId: number;
+	userId: string;
 	status: OrderStatus;
 }
 
